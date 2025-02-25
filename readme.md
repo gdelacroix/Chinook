@@ -61,7 +61,7 @@ L'Application sera disponible sur : `http://localhost:8080`
 ## Historique des commits
 | ID Commit  | Description |
 |------------|------------|
-| `a venir`  | Initialisation du projet avec Spring Boot - Gestion entités Employee et Customer |
+| `db6471b473af212313475877d72e58e6eb28305a`  | Initialisation du projet avec Spring Boot - Gestion entités Employee et Customer |
 | `...`  | ... |
 | `...`  | ... |
 | `...`  | ... |
