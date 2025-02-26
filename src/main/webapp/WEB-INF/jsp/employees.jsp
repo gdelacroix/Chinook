@@ -1,194 +1,166 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %> <%@taglib
-prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <%@ taglib
-uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<html>
-  <head>
-    <meta charset="utf-8" />
+      <html>
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+      <head>
+        <meta charset="utf-8" />
 
-    <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <meta name="author" content="" />
+        <meta name="description" content="" />
 
-    <title>Welcome</title>
+        <meta name="author" content="" />
 
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <title>Welcome</title>
 
-    <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
-    <link
-      href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+        <!-- Core theme CSS (includes Bootstrap)-->
 
-    <link href="/css/styles.css" rel="stylesheet" />
-  </head>
+        <link href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" />
 
-  <body id="page-top">
-    <!-- Navigation-->
+        <link href="/css/styles.css" rel="stylesheet" />
+      </head>
 
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
-      id="mainNav"
-    >
-      <div class="container px-4">
-        <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+      <body id="page-top">
+        <!-- Navigation-->
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"> </span>
-        </button>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+          <div class="container px-4">
+            <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
 
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#employees">Employés</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/customers">Clients</a>
-             </li>           
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"> </span>
+            </button>
 
-            <li class="nav-item">
-              <a class="nav-link" href="#services">Services</a>
-            </li>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#employees">Employés</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/customers">Clients</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/albums">Albums</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/artists">Artistes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#services">Services</a>
+                </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- About section-->
-
-    <section>
-      <div class="container px-4">
-        <div class="row gx-4 justify-content-center">
-          <div class="col-lg-12">
-            <h2>Nos employés</h2>
-
-            <p class="lead">Voici la liste de nos employés</p>
-
-            <div class="text-end">
-              <a
-                type="button"
-                class="btn btn-primary btn-md"
-                href="/employees/add"
-                >Ajouter Employé</a
-              >
+                <li class="nav-item">
+                  <a class="nav-link" href="#contact">Contact</a>
+                </li>
+              </ul>
             </div>
-
-            <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">#</th>
-
-                  <th scope="col">Prénom</th>
-
-                  <th scope="col">Nom</th>
-
-                  <th scope="col">Date de naissance</th>
-
-                  <th scope="col">Date d'embauche</th>
-
-                  <th scope="col">Adresse</th>
-
-                  <th scope="col">Code postal</th>
-
-                  <th scope="col">Ville</th>
-
-                  <th scope="col">Téléphone</th>
-
-                  <th scope="col">Email</th>
-
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <c:forEach var="employee" items="${employees}">
-                  <tr>
-                    <th scope="row">${employee.employeeId}</th>
-
-                    <td>${employee.firstName}</td>
-
-                    <td>${employee.lastName}</td>
-
-                    <td>
-                      <fmt:formatDate
-                        value="${employee.birthDate}"
-                        pattern="dd/MM/yyyy"
-                      />
-                    </td>
-
-                    <td>
-                      <fmt:formatDate
-                        value="${employee.hireDate}"
-                        pattern="dd/MM/yyyy"
-                      />
-                    </td>
-
-                    <td>${employee.address}</td>
-
-                    <td>${employee.postalCode}</td>
-
-                    <td>${employee.city}</td>
-
-                    <td>${employee.phone}</td>
-
-                    <td>${employee.email}</td>
-
-                    <td>
-                      <a
-                        type="button"
-                        class="btn btn-success"
-                        href="/employees/update?id=${employee.employeeId}"
-                        >Modifier</a
-                      >
-
-                      <a
-                        type="button"
-                        class="btn btn-warning"
-                        href="/employees/delete?id=${employee.employeeId}"
-                        >Supprimer</a
-                      >
-                    </td>
-                  </tr>
-                </c:forEach>
-              </tbody>
-            </table>
           </div>
-        </div>
-      </div>
-    </section>
+        </nav>
 
-    <!-- Footer-->
+        <!-- About section-->
 
-    <footer class="py-5 bg-dark">
-      <div class="container px-4">
-        <p class="m-0 text-center text-white">
-          Copyright &copy; Your Website 2023
-        </p>
-      </div>
-    </footer>
+        <section>
+          <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+              <div class="col-lg-12">
+                <h2>Nos employés</h2>
 
-    <script src="/webjars/jquery/3.6.1/jquery.min.js"></script>
+                <p class="lead">Voici la liste de nos employés</p>
 
-    <script src="/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+                <div class="text-end">
+                  <a type="button" class="btn btn-primary btn-md" href="/employees/add">Ajouter Employé</a>
+                </div>
 
-    <script src="/js/scripts.js"></script>
-  </body>
-</html>
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+
+                      <th scope="col">Prénom</th>
+
+                      <th scope="col">Nom</th>
+
+                      <th scope="col">Date de naissance</th>
+
+                      <th scope="col">Date d'embauche</th>
+
+                      <th scope="col">Adresse</th>
+
+                      <th scope="col">Code postal</th>
+
+                      <th scope="col">Ville</th>
+
+                      <th scope="col">Téléphone</th>
+
+                      <th scope="col">Email</th>
+
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <c:forEach var="employee" items="${employees}">
+                      <tr>
+                        <th scope="row">${employee.employeeId}</th>
+
+                        <td>${employee.firstName}</td>
+
+                        <td>${employee.lastName}</td>
+
+                        <td>
+                          <fmt:formatDate value="${employee.birthDate}" pattern="dd/MM/yyyy" />
+                        </td>
+
+                        <td>
+                          <fmt:formatDate value="${employee.hireDate}" pattern="dd/MM/yyyy" />
+                        </td>
+
+                        <td>${employee.address}</td>
+
+                        <td>${employee.postalCode}</td>
+
+                        <td>${employee.city}</td>
+
+                        <td>${employee.phone}</td>
+
+                        <td>${employee.email}</td>
+
+                        <td>
+                          <a type="button" class="btn btn-success"
+                            href="/employees/update?id=${employee.employeeId}">Modifier</a>
+
+                          <a type="button" class="btn btn-warning"
+                            href="/employees/delete?id=${employee.employeeId}">Supprimer</a>
+                        </td>
+                      </tr>
+                    </c:forEach>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer-->
+
+        <footer class="py-5 bg-dark">
+          <div class="container px-4">
+            <p class="m-0 text-center text-white">
+              Copyright &copy; Your Website 2023
+            </p>
+          </div>
+        </footer>
+
+        <script src="/webjars/jquery/3.6.1/jquery.min.js"></script>
+
+        <script src="/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+
+        <script src="/js/scripts.js"></script>
+      </body>
+
+      </html>
