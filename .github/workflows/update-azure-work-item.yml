@@ -30,7 +30,7 @@ jobs:
           curl -X PATCH \
             -H "Content-Type: application/json-patch+json" \
             -H "Authorization: Bearer ${{ secrets.AZURE_DEVOPS_TOKEN }}" \
-            --data '[
+            --data-raw '[
                 {
                 "op": "add",
                 "path": "/relations/-",
