@@ -71,14 +71,14 @@ public class ArtistController {
             return "addArtist";
         }
 
-        artistservice.saveArtist(Artist);
+        artistService.saveArtist(Artist);
         return "redirect:/artists";
     }
 
     @RequestMapping(value = "/artists/update", method = RequestMethod.GET)
 
     public String showUpdateArtistPage(@RequestParam long id, ModelMap model) {
-        Artist Artist = artistservice.getArtistById(id).get();
+        Artist Artist = artistService.getArtistById(id).get();
         model.put("Artist", Artist);
         model.addAttribute("title", "Mettre à jour Employé");
         return "addArtist";
@@ -92,14 +92,14 @@ public class ArtistController {
             return "addArtist";
         }
 
-        artistservice.updateArtist(Artist);
+        artistService.updateArtist(Artist);
         return "redirect:/artists";
     }
 
     @RequestMapping(value = "/artists/delete", method = RequestMethod.GET)
 
     public String deleteArtist(@RequestParam long id) {
-        artistservice.deleteArtist(id);
+        artistService.deleteArtist(id);
 
         return "redirect:/artists";
     }

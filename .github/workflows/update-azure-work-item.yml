@@ -1,0 +1,30 @@
+name: Update Azure DevOps Work Item
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [closed]
+
+jobs:
+  update_work_item:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Extraire le numéro du Work Item depuis le commit
+        id: extract_workitem
+        run: |
+          WORKITEM_ID=$(git log -1 --pretty=format:"%s" | grep -oE '#[0-9]+' | tr -d '#')
+          echo "WORKITEM_ID=$WORKITEM_ID" >> $GITHUB_ENV
+
+      - name: Mettre à jour le Work Item Azure DevOps
+        if: env.WORKITEM_ID != ''
+        run: |
+          curl -X PATCH \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.AZURE_DEVOPS_TOKEN }}" \
+            --data '[
+              { "op": "add", "path": "/fields/System.History", "value": "Mise à jour depuis GitHub: ${{ github.event.head_commit.message }}" }
+            ]' \
+            "https://dev.azure.com/AFPAGuiz/Playlists/_apis/wit/workitems/${{ env.WORKITEM_ID }}?api-version=6.0"
