@@ -17,19 +17,19 @@ jobs:
       - name: Extraire le numéro du Work Item depuis le commit
         id: extract_workitem
         run: |
-          WORKITEM_ID=$(git log -1 --pretty=format:"%s" | grep -oE '#[0-9]+' | tr -d '#')
-          echo "WORKITEM_ID=$WORKITEM_ID" 
+          ID_WORKITEM=$(git log -1 --pretty=format:"%s" | grep -oE '#[0-9]+' | tr -d '#')
+          echo "ID_WORKITEM=$ID_WORKITEM" 
       - name: Vérification du Work Item
         run: | 
-          echo "Work Item ID détecté : $WORKITEM_ID"  
+          echo "Work Item ID détecté : $ID_WORKITEM"  
 
 
       - name: Mettre à jour le Work Item Azure DevOps
-        if: env.WORKITEM_ID != ''
+        if: env.ID_WORKITEM != ''
         run: |
           echo "repository: ${{ github.repository }}"
           echo "sha: ${{ github.sha }}"
-          curl -X PATCH "https://dev.azure.com/AFPAGuiz/_apis/wit/workitems/$WORKITEM_ID?api-version=6.0" \
+          curl -X PATCH "https://dev.azure.com/AFPAGuiz/_apis/wit/workitems/$ID_WORKITEM?api-version=6.0" \
             -H "Content-Type: application/json-patch+json" \
             -H "Authorization: Basic $(echo -n :$AZURE_DEVOPS_TOKEN | base64)" \
             -d '[
