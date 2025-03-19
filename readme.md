@@ -77,8 +77,8 @@ L'Application sera disponible sur : `http://localhost:8080`
 - Gestion des clients : ajout, modification et suppression des clients.
 - Gestion des artistes : création, modification, suppression et affichage des artistes.
 - Gestion des albums : ajout, modification et suppression des albums.
-- Gestions des titres : ajout, suppression modification
-- Gestions des playlists : ajout, suppression modification
+- Gestions des titres : ajout, suppression, modification
+- Gestions des playlists : ajout, suppression, modification
 - Interface utilisateur basée sur JSP.
 
 ---
