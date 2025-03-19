@@ -18,10 +18,10 @@ jobs:
         id: extract_workitem
         run: |
           WORKITEM_ID=$(git log -1 --pretty=format:"%s" | grep -oE '#[0-9]+' | tr -d '#')
-          echo "WORKITEM_ID=$WORKITEM_ID" >> $GITHUB_ENV
+          echo "WORKITEM_ID=$WORKITEM_ID" 
       - name: Vérification du Work Item
         run: | 
-          echo "Work Item ID détecté : $WORKITEM_ID" >> $GITHUB_ENV
+          echo "Work Item ID détecté : $WORKITEM_ID sur environnement $GITHUB_ENV"  
 
 
       - name: Mettre à jour le Work Item Azure DevOps
