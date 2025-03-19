@@ -38,7 +38,7 @@ jobs:
                     "rel": "ArtifactLink",
                     "url": "https://github.com/gdelacroix/Chinook/commit/${{ github.sha }}",
                     "attributes": {
-                    "name": "GitHub Commit"
+                    "name": "GitHub Commit ${{ github.sha }}"
                     }
                 }
                 }
