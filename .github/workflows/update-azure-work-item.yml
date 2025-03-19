@@ -12,11 +12,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v4  
       - name: Extraire le numéro du Work Item depuis le commit
         id: extract_workitem
         run: |
           WORKITEM_ID=$(git log -1 --pretty=format:"%s" | grep -oE '#[0-9]+' | tr -d '#')
           echo "WORKITEM_ID=$WORKITEM_ID" >> $GITHUB_ENV
+      - name: Vérification du Work Item
+        run: | 
+          echo "Work Item ID détecté : $WORKITEM_ID"
+
 
       - name: Mettre à jour le Work Item Azure DevOps
         if: env.WORKITEM_ID != ''
