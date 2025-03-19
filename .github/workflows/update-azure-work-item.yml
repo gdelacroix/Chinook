@@ -19,6 +19,7 @@ jobs:
         run: |
           ID_WORKITEM=$(git log -1 --pretty=format:"%s" | grep -oE '#[0-9]+' | tr -d '#')
           echo "ID_WORKITEM=$ID_WORKITEM" 
+          echo "ID_WORKITEM=$ID_WORKITEM" >> $GITHUB_ENV
       - name: Vérification du Work Item
         run: | 
           echo "Work Item ID détecté : $ID_WORKITEM"  
