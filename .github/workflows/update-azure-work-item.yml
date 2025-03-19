@@ -21,12 +21,14 @@ jobs:
           echo "WORKITEM_ID=$WORKITEM_ID" 
       - name: Vérification du Work Item
         run: | 
-          echo "Work Item ID détecté : $WORKITEM_ID sur environnement $GITHUB_ENV"  
+          echo "Work Item ID détecté : $WORKITEM_ID"  
 
 
       - name: Mettre à jour le Work Item Azure DevOps
         if: env.WORKITEM_ID != ''
         run: |
+          echo "repository: ${{ github.repository }}"
+          echo "sha: ${{ github.sha }}"
           curl -X PATCH "https://dev.azure.com/AFPAGuiz/_apis/wit/workitems/$WORKITEM_ID?api-version=6.0" \
             -H "Content-Type: application/json-patch+json" \
             -H "Authorization: Basic $(echo -n :$AZURE_DEVOPS_TOKEN | base64)" \
