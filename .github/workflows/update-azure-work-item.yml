@@ -8,7 +8,7 @@ on:
     types: [closed]
 
 jobs:
-  update_work_item:
+  link_commit:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,20 +27,21 @@ jobs:
       - name: Mettre à jour le Work Item Azure DevOps
         if: env.WORKITEM_ID != ''
         run: |
-          curl -X PATCH \
+          curl -X PATCH "https://dev.azure.com/AFPAGuiz/_apis/wit/workitems/$WORKITEM_ID?api-version=6.0" \
             -H "Content-Type: application/json-patch+json" \
-            -H "Authorization: Bearer ${{ secrets.AZURE_DEVOPS_TOKEN }}" \
-            --data-raw '[
-                {
+            -H "Authorization: Basic $(echo -n :$AZURE_DEVOPS_PAT | base64)" \
+            -d '[
+              {
                 "op": "add",
                 "path": "/relations/-",
                 "value": {
-                    "rel": "ArtifactLink",
-                    "url": "https://github.com/gdelacroix/Chinook/commit/${{ github.sha }}",
-                    "attributes": {
-                    "name": "GitHub Commit ${{ github.sha }}"
-                    }
+                  "rel": "ArtifactLink",
+                  "url": "'"https://github.com/${{ github.repository }}/commit/${{ github.sha }}"'",
+                  "attributes": {
+                    "name": "GitHub Commit"
+                  }
                 }
-                }
-            ]' \        
-            "https://dev.azure.com/AFPAGuiz/_apis/wit/workitems/${{ env.WORKITEM_ID }}?api-version=6.0"
+              }
+            ]'
+        env:
+          AZURE_DEVOPS_PAT: ${{ secrets.secrets }}
