@@ -65,7 +65,7 @@ L'Application sera disponible sur : `http://localhost:8080`
 | ------------------------------------------ | -------------------------------------------------------------------------------- |
 | `db6471b473af212313475877d72e58e6eb28305a` | Initialisation du projet avec Spring Boot - Gestion entités Employee et Customer |
 | `4ad11bd111ca6a663b8571ae8aa9f598a90162b0` | Gestion entités Album et Artist                                                  |
-| `...`                                      | ...                                                                              |
+| `4d20daf03be17f96a6ad5d5b47d748e3a0afe6f8` | Gestion titres et playlists                                                      |
 | `...`                                      | ...                                                                              |
 | `...`                                      | ...                                                                              |
 
@@ -77,6 +77,8 @@ L'Application sera disponible sur : `http://localhost:8080`
 - Gestion des clients : ajout, modification et suppression des clients.
 - Gestion des artistes : création, modification, suppression et affichage des artistes.
 - Gestion des albums : ajout, modification et suppression des albums.
+- Gestions des titres : ajout, suppression modification
+- Gestions des playlists : ajout, suppression modification
 - Interface utilisateur basée sur JSP.
 
 ---
