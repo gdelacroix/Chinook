@@ -31,6 +31,16 @@ jobs:
             -H "Content-Type: application/json-patch+json" \
             -H "Authorization: Bearer ${{ secrets.AZURE_DEVOPS_TOKEN }}" \
             --data '[
-              { "op": "add", "path": "/fields/System.History", "value": "Mise à jour depuis GitHub: ${{ github.event.head_commit.message }}" }
-            ]' \
+                {
+                "op": "add",
+                "path": "/relations/-",
+                "value": {
+                    "rel": "ArtifactLink",
+                    "url": "vstfs:///Git/Commit/AFPAGuiz/Playlists/${{ github.sha }}",
+                    "attributes": {
+                    "name": "GitHub Commit"
+                    }
+                }
+                }
+            ]' \        
             "https://dev.azure.com/AFPAGuiz/Playlists/_apis/wit/workitems/${{ env.WORKITEM_ID }}?api-version=6.0"
