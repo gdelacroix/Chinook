@@ -28,7 +28,7 @@ jobs:
         if: env.WORKITEM_ID != ''
         run: |
           curl -X PATCH \
-            -H "Content-Type: application/json" \
+            -H "Content-Type: application/json-patch+json" \
             -H "Authorization: Bearer ${{ secrets.AZURE_DEVOPS_TOKEN }}" \
             --data '[
               { "op": "add", "path": "/fields/System.History", "value": "Mise à jour depuis GitHub: ${{ github.event.head_commit.message }}" }
