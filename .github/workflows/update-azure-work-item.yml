@@ -36,7 +36,7 @@ jobs:
                 "path": "/relations/-",
                 "value": {
                     "rel": "ArtifactLink",
-                    "url": "vstfs:///Git/Commit/AFPAGuiz/Playlists/${{ github.sha }}",
+                    "url": "https://github.com/AFPAGuiz/Playlists/commit//${{ github.sha }}",
                     "attributes": {
                     "name": "GitHub Commit"
                     }
