@@ -43,4 +43,4 @@ jobs:
                 }
                 }
             ]' \        
-            "https://dev.azure.com/AFPAGuiz/Playlists/_apis/wit/workitems/${{ env.WORKITEM_ID }}?api-version=6.0"
+            "https://dev.azure.com/AFPAGuiz/_apis/wit/workitems/${{ env.WORKITEM_ID }}?api-version=6.0"
