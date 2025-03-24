@@ -41,7 +41,7 @@ jobs:
                 "path": "/relations/-",
                 "value": {
                   "rel": "ArtifactLink",
-                  "url": '"https://github.com/${{ github.repository }}/commit/${{ github.sha }}",
+                  "url": "https://github.com/${{ github.repository }}/commit/${{ github.sha }}",
                   "attributes": {
                     "name": "GitHub Commit"
                   }
