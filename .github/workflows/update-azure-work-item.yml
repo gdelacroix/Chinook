@@ -18,7 +18,6 @@ jobs:
         id: extract_workitem
         run: |
           ID_WORKITEM=$(git log -1 --pretty=format:"%s" | grep -oE '#[0-9]+' | tr -d '#')
-          echo "ID_WORKITEM=$ID_WORKITEM" 
           echo "ID_WORKITEM=$ID_WORKITEM" >> $GITHUB_ENV
       - name: Vérification du Work Item
         run: | 
@@ -32,14 +31,14 @@ jobs:
           echo "sha: ${{ github.sha }}"
           curl -X PATCH "https://dev.azure.com/AFPAGuiz/_apis/wit/workitems/$ID_WORKITEM?api-version=6.0" \
             -H "Content-Type: application/json-patch+json" \
-            -H "Authorization: Basic $(echo -n :$AZURE_DEVOPS_TOKEN | base64)" \
+            -H "Authorization:  Bearer ${{ secrets.AZURE_DEVOPS_TOKEN }}" \
             -d '[
               {
                 "op": "add",
                 "path": "/relations/-",
                 "value": {
                   "rel": "ArtifactLink",
-                  "url": "'"https://github.com/${{ github.repository }}/commit/${{ github.sha }}"'",
+                  "url": '"https://github.com/${{ github.repository }}/commit/${{ github.sha }}",
                   "attributes": {
                     "name": "GitHub Commit"
                   }
@@ -47,4 +46,4 @@ jobs:
               }
             ]'
         env:
-          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+          AZURE_DEVOPS_TOKEN: ${{ secrets.AZURE_DEVOPS_TOKEN }}
