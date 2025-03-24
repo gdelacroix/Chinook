@@ -27,8 +27,6 @@ jobs:
       - name: Mettre à jour le Work Item Azure DevOps
         if: env.ID_WORKITEM != ''
         run: |
-          echo "repository: ${{ github.repository }}"
-          echo "sha: ${{ github.sha }}"
           curl -X PATCH "https://dev.azure.com/AFPAGuiz/_apis/wit/workitems/$ID_WORKITEM?api-version=6.0" \
             -H "Content-Type: application/json-patch+json" \
             -H "Authorization:  Bearer ${{ secrets.AZURE_DEVOPS_TOKEN }}" \
