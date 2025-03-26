@@ -54,6 +54,10 @@ L'Application sera disponible sur : `http://localhost:8080`
 
 - CRUD sur les employés (`/employees`)
 - CRUD sur les clients (`/customers`)
+- CRUD sur les artistes (`/artists`)
+- CRUD sur les albums (`/albums`)
+- CRUD sur les titres (`/tracks`)
+- CRUD sur les playlists (`/playlists`)
 - Requêtes personnalisées avec Spring Data JPA
 - Gestion des erreurs et validation
 
