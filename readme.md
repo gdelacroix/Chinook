@@ -21,8 +21,8 @@ Ce projet est une application web développée en **Java Spring Boot**, permetta
 ### 1. Cloner le projet
 
 ```bash
-git clone https://github.com/votre-repo/spring-boot-gestion.git
-cd spring-boot-gestion
+git clone https://github.com/gdelacroix/Chinook.git
+cd Chinook
 ```
 
 ### 2. Configurer la base de données
